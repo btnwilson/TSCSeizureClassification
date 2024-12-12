@@ -7,13 +7,13 @@ This project is designed to classify seizures using advanced data preprocessing,
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.2%2B-blue)
 
 ## Table of Contents
-- [Dependencies](#dependencies)
-- [Overview](#overview)
-- [Methods](#methods)
+1. [Dependencies](#dependencies)
+2. [Overview](#overview)
+3. [Methods](#methods)
     -[Data Preprocessing](#datapreprocessing)
     -[Model Training](#modeltraining)
     -[Saliency Analysis](#saliencyanalysis)
-- [results](#results)
+4. [results](#results)
 ---
 
 ## Dependencies
