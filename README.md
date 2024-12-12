@@ -12,15 +12,16 @@ The data used in this project was collected from TSC knockout (KO) mice at the U
 
 Given the large volume of EEG data collected, manual annotation is increasingly inefficient and impractical. To address this challenge, this project employs advanced machine learning and deep learning techniques to automate the detection of seizures, replacing a simple algorithm that currently identifies candidate seizure events based on arclength and spike counting. Through systematic exploration of various modeling and data preprocessing approaches, the project seeks to determine the most effective and computationally efficient model for seizure classification.
 
-Ultimately, the objective is to create a robust, interpretable classifier that can handle large volumes of data and provide accurate predictions, enabling better management and understanding of TSC-related epilepsy. The data for these notebooks is not publicly availible.
+Ultimately, the objective is to create a robust, interpretable classifier that can handle large volumes of data and provide accurate predictions, enabling better management and understanding of TSC-related epilepsy. The data for these notebooks is not publicly available.
   
 ## Table of Contents
-1. [Dependencies](#dependencies)    
-2. [Methods](#methods)  
+1. [Overview](#overview)
+2. [Dependencies](#dependencies)    
+3. [Methods](#methods)  
     - [Data Preprocessing](#data-preprocessing)  
     - [Model Training](#model-training)  
     - [Saliency Analysis](#saliency-analysis)  
-3. [Results](#results)
+4. [Results](#results)
 ---
 
 ## Dependencies
