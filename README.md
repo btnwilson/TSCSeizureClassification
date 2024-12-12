@@ -1,4 +1,4 @@
-# Seizure Classification: EEG Seizure Classification for TSC Model
+# EEG Seizure Classification for TSC Model
 
 This project is designed to classify seizures using advanced data preprocessing, machine learning models, and deep learning techniques. Its goal is to provide accurate and interpretable predictions to support EEG annotations.
 
