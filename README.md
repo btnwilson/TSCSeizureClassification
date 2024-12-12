@@ -10,9 +10,9 @@ This project is designed to classify seizures using advanced data preprocessing,
 1. [Dependencies](#dependencies)  
 2. [Overview](#overview)  
 3. [Methods](#methods)  
-    - [Data Preprocessing](#datapreprocessing)  
-    - [Model Training](#modeltraining)  
-    - [Saliency Analysis](#saliencyanalysis)  
+    - [Data Preprocessing](#data-preprocessing)  
+    - [Model Training](#model-training)  
+    - [Saliency Analysis](#saliency-analysis)  
 4. [Results](#results)
 ---
 
