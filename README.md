@@ -10,6 +10,9 @@ This project is designed to classify seizures using advanced data preprocessing,
 - [Dependencies](#dependencies)
 - [Overview](#overview)
 - [Methods](#methods)
+    -[Data Preprocessing](#datapreprocessing)
+    -[Model Training](#modeltraining)
+    -[Saliency Analysis](#saliencyanalysis)
 - [results](#results)
 ---
 
@@ -48,4 +51,22 @@ The following libraries and tools are required to run this project:
 
 
 ## Overview
-This project aims to create a classifier to detect seizures for EEG data based on 30-second clips of recordings. The data used is EEG data collected from mouse models of tuberous sclerosis complex (TSC), which is a common cause of epilepsy in humans. The data was collected at the University of Vermont from TSC KO mice. The goal is to expedite the detection of seizures in new recordings in order to develop a better phenotype for this mouse model. Additional data is being collected in large volumes and requires a more efficient sorting method other than manual annotation. 
+  This project aims to create a classifier to detect seizures for EEG data based on 30-second clips of recordings. The data used is EEG data collected from mouse models of tuberous sclerosis complex (TSC), which is a common cause of epilepsy in humans. The data was collected at the University of Vermont from TSC KO mice. The goal is to expedite the detection of seizures in new recordings in order to develop a better phenotype for this mouse model. Additional data is being collected in large volumes and requires a more efficient sorting method other than manual annotation. 
+
+  This repository contains code implementing multiple modeling approaches and data processing techniques to optimize performance. This allowed for a systematic exploration of techniques to identify the most effective model low-complexity model to achieve the end goal of seizure classification. This project explores machine learning techniques as a potential replacement for a simple algorithm currently used to identify candidate seizure events relying on arclength and spike counting for this data set. 
+
+## Methods 
+### Data Preprocessing
+
+### Model Training
+
+### Saliency Analysis
+
+
+
+
+
+
+
+  
+
