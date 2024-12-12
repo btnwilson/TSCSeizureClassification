@@ -177,6 +177,7 @@ After all models had been trained, five samples of each class were loaded into a
 Model training results for each model type tested. Cross-validation was not performed, but models were relatively stable across several training attempts. Loss curves, confusion matrices, and saliency plots are shown below. 
 
 #### EEGCNN1D Model 
+![CNN1_CM](Result Images/CNN Mod Data CM.png)
 
 #### EEGCNN1D with Weighted Loss
 
