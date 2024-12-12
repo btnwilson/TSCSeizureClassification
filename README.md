@@ -217,9 +217,9 @@ Model training results for each model type tested. Cross-validation was not perf
 ![CNN3_CM](Result%20Images/CNN%20Mod%20Data%20CM.png)
 
 ##### Class 0 Sample
-![CNN3_SalNeg](Result%20Images/Sal%20CNN%20Mod%20Data%20Neg.png)
+![CNN3_SalNeg](Result%20Images/Sal%20CNN%20Transformed%20Neg.png)
 ##### Class 1 Sample
-![CNN3_SalNeg](Result%20Images/Sal%20CNN%20Mod%20Data%20Pos.png)
+![CNN3_SalNeg](Result%20Images/Sal%20CNN%20Transformed%20Pos.png)
 
 
 
