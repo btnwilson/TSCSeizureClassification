@@ -179,8 +179,8 @@ Model training results for each model type tested. Cross-validation was not perf
 #### EEGCNN1D Model 
 ![CNN1_loss](Result%20Images/CNN%20Raw%20Data%20Loss%20Curve.png)
 ![CNN1_CM](Result%20Images/CNN%20Raw%20Data%20CM.png)
-![CNN1_SalNeg](Result%20Images/CNN%20Raw%20Data%20Neg.png)
-![CNN1_SalNeg](Result%20Images/CNN%20Raw%20Data%20Pos.png)
+![CNN1_SalNeg](Result%20Images/Sal%20CNN%20Raw%20Data%20Neg.png)
+![CNN1_SalNeg](Result%20Images/Sal%20CNN%20Raw%20Data%20Pos.png)
 
 #### EEGCNN1D with Weighted Loss
 
