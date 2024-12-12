@@ -12,7 +12,7 @@ The data used in this project was collected from TSC knockout (KO) mice at the U
 
 Given the large volume of EEG data collected, manual annotation is increasingly inefficient and impractical. To address this challenge, this project employs advanced machine learning and deep learning techniques to automate the detection of seizures, replacing a simple algorithm that currently identifies candidate seizure events based on arclength and spike counting. Through systematic exploration of various modeling and data preprocessing approaches, the project seeks to determine the most effective and computationally efficient model for seizure classification.
 
-Ultimately, the objective is to create a robust, interpretable classifier that can handle large volumes of data and provide accurate predictions, enabling better management and understanding of TSC-related epilepsy.
+Ultimately, the objective is to create a robust, interpretable classifier that can handle large volumes of data and provide accurate predictions, enabling better management and understanding of TSC-related epilepsy. The data for these notebooks is not publicly availible.
   
 ## Table of Contents
 1. [Dependencies](#dependencies)    
@@ -65,36 +65,127 @@ The data loaded into the notebooks in this repo was segmented and labeled based 
 The first two CNNs trained used the filtered normalized data directly. The LSTM, Transformer, and final CNN implemented were trained on additional processed data. First, the data was randomly downsampled. This reduced the number of nonseizure windows, which initially was over 50,000, compared to the 417 seizure windows. Next, PCA was performed on the reduced data, which had around 4,500 samples in total. After the PCA transform, the Synthetic Minority Oversampling Technique (SMOTE) was used to increase the seizure class size. The LSTM, Transformer adn last CNN of the notebook are all trained using this augmented dataset. 
 
 ### Model Training
-#### EEGCNN1D
-The EEGCNN1D model is a simple 1D convolutional neural network (CNN) designed for processing raw EEG data to classify or predict seizure events. The model is structured as follows:
+#### EEGCNN1D Model Architecture
+The **EEGCNN1D** model is a 1D convolutional neural network designed for processing raw EEG data to classify or predict seizure events.
+- **Input Layer**: 
+  - 1D EEG signal with a single channel.
+- **Convolutional Blocks**:
+  - **Conv1**: 
+    - 16 output channels, kernel size 5, stride 1, padding 2
+    - Followed by ReLU and max pooling
+  - **Conv2**: 
+    - 32 output channels, similar kernel size, stride, and padding
+    - Followed by ReLU and max pooling
+  - **Conv3**: 
+    - 64 output channels, similar structure
+  - **Conv4**: 
+    - 64 output channels, followed by ReLU and max pooling
+- **Fully Connected Layers**:
+  - **FC1**: 
+    - 128 units, ReLU activation
+  - **FC2**: 
+    - Single output unit for classification
+- **Dropout**: 
+  - 0.5 rate to prevent overfitting
+- **Loss Function and Optimizer**:
+  - **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`)
+  - **Optimizer**: Adam optimizer with a learning rate of 0.001
+- **Training**:
+  - **Number of Epochs**: 10
+  
+#### EEGCNN1D with Weighted Loss
+- **Model Initialization**:
+  - `EEGCNN1D` model is instantiated with the same structure as above
+- **Loss Function**:
+  - **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`)
+  - **Weights**: 
+    - `weights = 1.0 for class 0, 20.0 for class 1`
+- **Optimizer**:
+  - **Optimizer**: Adam optimizer with a learning rate of 0.001.
+- **Training**:
+  - **Number of Epochs**: 10
 
-Model Architecture:
-Input Layer:
+#### EEGLSTM Model Architecture
+The **EEGLSTM** model is a Long Short-Term Memory (LSTM) network designed for processing sequential EEG data to classify or predict seizure events.
+- **Input Layer**: 
+  - 1024 features per time step in the EEG sequence.
+- **LSTM Block**:
+  - **LSTM**: 
+    - Hidden size: 64 units, 1 layer.
+    - Dropout: 0.3 applied to LSTM output.
+- **Fully Connected Output**:
+  - **FC**: 
+    - A fully connected layer with 1 output unit for classification.
+- **Loss Function and Optimizer**:
+  - **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`) with balanced class weights.
+  - **Optimizer**: Adam optimizer with a learning rate of 0.0001.
+- **Training**:
+  - **Number of Epochs**: 20
 
-The model expects a 1D sequence of EEG data as input. The input data has a single channel (1D signal) and is processed through a series of convolutional layers to extract relevant features.
-Convolutional Blocks:
-
-The network consists of four convolutional layers:
-Conv1: 1D convolutional layer with 16 output channels, kernel size of 5, stride of 1, and padding of 2. This is followed by a ReLU activation function and max pooling with a kernel size of 2 and stride of 2.
-Conv2: Another 1D convolutional layer with 32 output channels and similar kernel size and padding. ReLU activation and max pooling are applied.
-Conv3: This layer has 64 output channels and follows the same structure as the previous convolutional layers.
-Conv4: Another 1D convolutional layer with 64 output channels, which is followed by ReLU and max pooling.
-These convolutional layers progressively extract features from the EEG signal, reducing its dimensionality through pooling operations and increasing the number of feature maps as the network deepens.
-
-Fully Connected (FC) Layers:
-
-After the convolutional layers, the output is flattened and passed through two fully connected layers:
-FC1: A fully connected layer with 128 units, followed by a ReLU activation function.
-FC2: The final output layer with a single unit, which outputs a value that can be interpreted as the classification or prediction for the given input.
-Dropout: A dropout layer with a rate of 0.5 is included to prevent overfitting by randomly dropping neurons during training.
-
-Loss Function and Optimizer:
-Loss Function: The model uses Binary Cross-Entropy with Logits (BCEWithLogitsLoss), which is suitable for binary classification tasks. This loss function combines a sigmoid layer and the binary cross-entropy loss into one class, simplifying the implementation of classification tasks with one output unit.
-
-Optimizer: The model is trained using the Adam optimizer, which is an adaptive learning rate optimizer. It is widely used for training deep learning models due to its efficiency and ease of use. The learning rate is set to 0.001.
+#### EEGTRANSFORMER Model Architecture
+The **EEGTRANSFORMER** model is a transformer-based architecture designed for processing sequential EEG data to classify or predict seizure events.
+- **Input Layer**: 
+  - 1024 features per time step in the EEG sequence.
+- **Transformer Block**:
+  - **Transformer Encoder**: 
+    - Dimensionality: 1024
+    - Number of heads: 4
+    - Feedforward dimension: 4 * dim_model
+    - Activation: ReLU
+    - Dropout: 0.1
+    - 2 encoder layers with LayerNorm
+- **Fully Connected Output**:
+  - **FC**: 
+    - A fully connected layer with 1 output unit for classification.
+- **Loss Function and Optimizer**:
+  - **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`) with class weights for seizure events.
+  - **Optimizer**: Adam optimizer with a learning rate of 0.0001.
+- **Training**:
+  - **Number of Epochs**: 20
+  
+#### EEGCNNPCA1D Model Architecture
+The **EEGCNNPCA1D** model is a 1D convolutional neural network designed for processing raw EEG data to classify or predict seizure events, similar to the previous CNN but with one less convolutional layer.
+- **Input Layer**: 
+  - 1D EEG signal with a single channel.
+- **Convolutional Blocks**:
+  - **Conv1**: 
+    - 16 output channels, kernel size 5, stride 1, padding 2
+    - Followed by ReLU and max pooling
+  - **Conv2**: 
+    - 32 output channels, similar kernel size, stride, and padding
+    - Followed by ReLU and max pooling
+  - **Conv3**: 
+    - 64 output channels, similar structure, followed by ReLU and max pooling
+- **Fully Connected Layers**:
+  - **FC1**: 
+    - 128 units, ReLU activation
+  - **FC2**: 
+    - Single output unit for classification
+- **Dropout**: 
+  - 0.5 rate to prevent overfitting
+- **Loss Function and Optimizer**:
+  - **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`) with class weights for seizure events.
+  - **Optimizer**: Adam optimizer with a learning rate of 0.001.
+- **Training**:
+  - **Number of Epochs**: 10 
 
 ### Saliency Analysis
+After all models had been trained, five samples of each class were loaded into a new notebook, and the best version of each model was initialized. Saliency maps were generated for sample inputs and plotted along with the data input for comparison. The results are shown below. 
 
+### Results
+Model training results for each model type tested. Cross-validation was not performed, but models were relatively stable across several training attempts. Loss curves, confusion matrices, and saliency plots are shown below. 
+
+#### EEGCNN1D Model 
+
+#### EEGCNN1D with Weighted Loss
+
+
+#### EEGLSTM Model Architecture
+
+#### EEGTRANSFORMER Model Architecture
+
+  
+#### EEGCNNPCA1D Model Architecture
 
 
 
