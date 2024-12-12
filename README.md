@@ -203,7 +203,7 @@ Model training results for each model type tested. Cross-validation was not perf
 ##### Class 1 Sample
 ![LSTM_SalNeg](Result%20Images/Sal%20LSTM%20Pos.png)
 ---
-#### EEGTRANSFORMER Model
+## EEGTRANSFORMER Model
 ![Trans_loss](Result%20Images/Transformer%20Mod%20Data%20Loss%20Curve.png)
 ![Trans_CM](Result%20Images/Transformer%20Mod%20Data%20CM.png)
 
