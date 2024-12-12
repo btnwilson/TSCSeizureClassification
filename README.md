@@ -176,7 +176,7 @@ After all models had been trained, five samples of each class were loaded into a
 ### Results
 Model training results for each model type tested. Cross-validation was not performed, but models were relatively stable across several training attempts. Loss curves, confusion matrices, and saliency plots are shown below. 
 
-#### EEGCNN1D Model 
+## EEGCNN1D Model 
 ![CNN1_loss](Result%20Images/CNN%20Raw%20Data%20Loss%20Curve.png)
 ![CNN1_CM](Result%20Images/CNN%20Raw%20Data%20CM.png)
 
@@ -185,7 +185,7 @@ Model training results for each model type tested. Cross-validation was not perf
 ##### Class 1 Sample
 ![CNN1_SalNeg](Result%20Images/Sal%20CNN%20Raw%20Data%20Pos.png)
 
-#### EEGCNN1D with Weighted Loss
+## EEGCNN1D with Weighted Loss
 ![CNN2_loss](Result%20Images/CNN%20Weighted%20Raw%20Data%20Loss%20Curve.png)
 ![CNN2_CM](Result%20Images/CNN%20Weighted%20Raw%20Data%20CM.png)
 
@@ -194,7 +194,7 @@ Model training results for each model type tested. Cross-validation was not perf
 ##### Class 1 Sample
 ![CNN2_SalNeg](Result%20Images/Sal%20CNN%20Weighted%20Raw%20Data%20Pos.png)
 
-#### EEGLSTM Model Architecture
+## EEGLSTM Model
 ![LSTM_loss](Result%20Images/LSTM%20Mod%20Data%20Loss%20Curve.png)
 ![LSTM_CM](Result%20Images/LSTM%20Mod%20Data%20CM.png)
 
@@ -203,7 +203,7 @@ Model training results for each model type tested. Cross-validation was not perf
 ##### Class 1 Sample
 ![LSTM_SalNeg](Result%20Images/Sal%20LSTM%20Pos.png)
 
-#### EEGTRANSFORMER Model Architecture
+#### EEGTRANSFORMER Model
 ![Trans_loss](Result%20Images/Transformer%20Mod%20Data%20Loss%20Curve.png)
 ![Trans_CM](Result%20Images/Transformer%20Mod%20Data%20CM.png)
 
@@ -212,7 +212,7 @@ Model training results for each model type tested. Cross-validation was not perf
 ##### Class 1 Sample
 ![Trans_SalNeg](Result%20Images/Sal%20Transformer%20Pos.png)
   
-#### EEGCNNPCA1D Model Architecture
+## EEGCNNPCA1D Model 
 ![CNN3_loss](Result%20Images/CNN%20Mod%20Data%20Loss%20Curve.png)
 ![CNN3_CM](Result%20Images/CNN%20Mod%20Data%20CM.png)
 
